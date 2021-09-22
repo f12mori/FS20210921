@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+         <meta charset="UTF-8">
+         <title>Formulario Prueba</title>
+</head>
+<body>  
+
+    <form >
+        <p style="color:blue;">
+        Nombre: <input type="text" name="name_control" autofocus required />
+        <br />
+        Correo Electrónico: <input type="email" name="email_control" required />
+        <br />
+        URL: <input type="url" name="url_control" placeholder="Escripe la URL de tu página web personal" />
+        <br />
+        Fecha: <input type="date" name="date_control" />
+        <br />
+        Tiempo: <input type="time" name="time_control" />
+        <br />
+        Nivel de satisfaccion (min 0, max 10): <input type="number" name="number_control" min="0" max="10" value="0" />
+        <br />
+        Teléfono: <input type="tel" name="tel_control" />
+        <br />
+        Término de búsqueda: <input type="search" name="search_control" />
+        <br />
+        Sistema operativo:
+        <select name="sistema_control">
+                <option value="windows">Windows</option>
+                <option value="linux">Linux</option>
+                <option value="macos">Macos</option>
+        </select>
+        <br/>
+        Que lenguajes de programación web conoces?
+        <input name="lenguaje_control" type="checkbox" value="html5" checked /> Html5
+        <input name="lenguaje_control" type="checkbox" value="ccs3" checked /> Css3
+        <input name="lenguaje_control" type="checkbox" value="javascript"/> JavaScript
+        <input name="lenguaje_control" type="checkbox" value="php"/> Php
+        <br/>
+        ¿Tienes alguna sugerencia para mejorar nuestro servicio?
+         <input name="python_control" type="radio"  value="si" checked /> Si
+         <input name="python_control" type="radio" value="no" /> No
+                 <br/>
+                 <br/>
+                 Comentarios:
+                 <textarea name="comentario_control" rows="4" cols="50"></textarea>
+         <br/>
+         <br/>
+        <input type="submit" value="Enviar" />
+        <input type="reset" value="Resetear" />
+    </form>
+</body>
+</html>
