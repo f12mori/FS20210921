@@ -2,51 +2,122 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="theme/style.css">
         <title>Video Club</title>
       </head>
       <body>
-        <nav class="menu">
-          <ul>
-            <li><a href="formulario.html">Formulario de registro</a></li>
-            <li><a href="Presentacion.html">Conoceme</a></li>
-          </ul>
-        </nav>
-        
-          <h2><strong>Inicio</strong></h2>
-        <h2>¡Bienvenido al videoclub Sakila!</h2>
-        <h3><u>Nuevas películas</u></h3>
-        <p>Este es el catalogo de peliculas que ofrecemos</p>
-        <table>
-          <tr>
-            <th scope="row">Película</th>
-            <th>Genero</th>
-            <th>Fecha</th>
-            <th>Precio</th>
-          </tr>
-          <tr>
-            <td>Black Widow</td>
-            <td>Aventura</td>
-            <td>20-17-2021</td>
-            <td>7€</td>
-          </tr>
-          <tr>
-            <td>Resacon en las Vegas</td>
-            <td>Comedia</td>
-            <td>24-07-2011</td>
-            <td>3€</td>
-          </tr>
-          <tr>
-            <td>Venom</td>
-            <td>Ciencia Ficcion</td>
-            <td>15-10-2021</td>
-            <td>9€</td>
-          </tr>
-        </table>
-        <br>
-        <br>
-        <br>
-        <footer>
-          <p>Sakila SL</p>
-        </footer>
+        <header>    
+          <div  class="flex-container">
+            <div style="flex-shrink: 0" ><a href="formulario.html">Formulario de registro</a></div>
+            <div style="order: 2"><a href="Presentacion.html">Ubicaciones</a></div>
+            <div style="order: 3"><a href="Presentacion.html">Conocenos</a></div>                    
+              
+          </div>
+          <p>Buscar pelicula:</p>
+          <form>
+            <input type="text" name="search" placeholder="Nombre ">
+          </form>
+        </header>
+
+        <h1>¡Bienvenido al videoclub Sakila!</h1>
+        <h2><u>Nuevas películas</u></h2>
+        <p>Este es el catalogo de peliculas que acabamos de incorporar</p>
+        <article>
+          <figure>
+            <summary>
+              <b>Black Widow</b>             
+          </summary>
+              <picture>            
+                  <img  width="200" src="imagenes/PeliblackWidow.jpg" alt="Black Widow">
+              </picture>
+              </figure>
+          <summary>
+            Al nacer, la Viuda Negra, también conocida como Natasha Romanova, se entrega a la KGB para convertirse en su agente definitivo. Cuando la URSS se separa, el gobierno intenta matarla mientras la acción se traslada a la actual Nueva York.
+          </summary>
+          <details>
+            <div>Alquiler: 3€/dia </div>
+            <div>Compra: 30€</div>
+           </details>         
+      </article>
+
+      <article>
+        <figure>
+          <summary>
+            <b>Venom</b>             
+        </summary>
+            <picture>            
+                <img width="200" src="imagenes/PeliVenom.jpg" alt="Black Widow">
+            </picture>
+            </figure>
+        <summary>
+          El periodista Eddie Brock (Tom Hardy) comienza a investigar la Fundación Vida, dirigida por el científico Carlton Drake (Riz Ahmed). ... Así que, tratando de obtener evidencias de un extraño organismo independiente llamado simbionte, una de las criaturas escapa, tomando a Eddie como huésped.
+        </summary>
+          <details>
+          <div>Alquiler: 2,5€/dia </div>
+          <div>Compra: 24€</div>
+         </details>         
+    </article>
+
+    <article>
+      <figure>
+        <summary>
+          <b>PeliVenom2</b>             
+      </summary>
+          <picture>            
+              <img width="200" src="imagenes/PeliVenom2.jpg" alt="Black Widow">
+          </picture>
+          </figure>
+      <summary>
+        Después de encontrar un cuerpo anfitrión en el periodista de investigación Eddie Brock, el simbionte alienígena debe enfrentarse a un nuevo enemigo, Carnage, el alter ego del asesino en serie Cletus Kasady.      </summary>
+        <details>
+        <div>Alquiler: 4€/dia </div>
+        <div>Compra: 36€</div>
+       </details>         
+    </article>
+
+    <article>
+      <figure>
+        <summary>
+          <b>Los Simpsons</b>             
+      </summary>
+          <picture>            
+              <img width="200" src="imagenes/PeliLosSimpsons.jpg" alt="Black Widow">
+          </picture>
+          </figure>
+      <summary>
+        Homer debe salvar al mundo de una catástrofe que él mismo ha provocado. ... Mientras Marge está indignada por la monumental metedura de pata de Homer, una turba vengativa cae sobre el hogar de los Simpson.        <details>
+        <div>Alquiler: 2€/dia </div>
+        <div>Compra: 20€</div>
+       </details>         
+    </article>
+
+    <article>
+      <figure>
+        <summary>
+          <b>Luca</b>             
+      </summary>
+          <picture>            
+              <img width="200" src="imagenes/PeliLuca.jpg" alt="Black Widow">
+          </picture>
+          </figure>
+      <summary>
+        En un hermoso pueblo en la Riviera italiana, Luca comparte sus aventuras de verano con su nuevo mejor amigo: un monstruo marino que se convierte en humano cuando está seco.      </summary>
+        <details>
+        <div>Alquiler: 4€/dia </div>
+        <div>Compra: 36€</div>
+       </details>         
+    </article> 
+    
+
+  </br> </br>
+
+    
+    <footer>
+      <div class="error-msg">
+          &copy; 2021 Todos los derechos reservados | <a href="/aviso-legal" target="_blank">Aviso Legal</a> | <a
+              href="/politica-de-privacidad" target="_blank">Política de Privacidad</a> | <a
+              href="/politica-de-cookies" target="_blank">Política de Cookies</a>
+      </div>
+  </footer>
       </body>
 </html>
