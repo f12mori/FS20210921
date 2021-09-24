@@ -68,7 +68,7 @@ header {
 
 
 @media print {
-    input[type=submit], input[type=button],  {
+    input[type=submit], input[type=button]  {
         display: none;
     }
     body > header {
