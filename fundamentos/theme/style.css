@@ -4,17 +4,8 @@
     color: var(--error-color, red);
 }
 
-input:active {
-    border-color: rgb(166, 255, 0);
-    font-size: 4em;
-}
-input[maxlength] {
-    background-color: var(--error-color, rgb(255, 0, 0));
-    color: white;
-}
-
 body {
-    color: rgb(0, 0, 0);
+    color: var(--cuerpo-color);
     background-color: var(--fondo-cuerpo);
 }
 
@@ -24,14 +15,15 @@ body {
 }
 .flex-container > div {
     width: 300px;
-    margin: 10px;
-    text-align: left;
-    line-height: 75px;
-    font-size: 30px;
+    margin: 5px;
+    text-align: center;
+    line-height: 70px;
+    font-size: 2.5em;
   }
   @media (max-width: 600px) {
     .flex-container {
       flex-direction: column;
+     
     }
   }
   @media (min-width: 800px) {
