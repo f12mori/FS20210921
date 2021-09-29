@@ -2,7 +2,7 @@
 
   "scripts": {
 
-    "test": "echo \"Error: no test specifed\" && exit 1",
+    "test": "karma start",
 
     "lint": "eslint app/js/**/*.js"
 
@@ -14,7 +14,17 @@
 
     "eslint-plugin-jasmine": "^4.1.2",
 
-    "jasmine-browser-runner": "^0.8.0"
+    "jasmine-browser-runner": "^0.8.0",
+
+    "jasmine-core": "^3.9.0",
+
+    "karma": "^6.3.4",
+
+    "karma-chrome-launcher": "^3.1.0",
+
+    "karma-coverage": "^2.0.3",
+
+    "karma-jasmine": "^4.0.1"
 
   }
 
