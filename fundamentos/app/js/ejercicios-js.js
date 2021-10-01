@@ -65,7 +65,7 @@ function primo(numero) {
 
     }
 
-    return numero !== 1;
+    return true;
 }
 
 //Ejercicio 5
