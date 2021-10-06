@@ -1,20 +1,21 @@
 .calculadora {
   border: 3px rgb(0, 0, 0) ridge;
   width: 200px;
-  text-align: center;
-  background-color: #8ed9ee; }
+  text-align: left;
+  background-color: #98b88a; }
 
 
 .cuerpo__screen {
+
   width: 100px;
   border: 2px black solid;
   text-align: right;
-    background-color: white; font-family: "Open Sans";
+    background-color: rgb(231, 212, 240);
     overflow: hidden;}
 
 
 .calculadora [type=button] {
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   padding: 10;
 }
