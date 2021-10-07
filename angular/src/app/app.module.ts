@@ -7,11 +7,13 @@ import { DemosComponent } from './demos/demos.component';
 import { FormsModule } from '@angular/forms';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
-import { MyCoreModule } from 'src/lib/my-core';
+import { ERROR_LEVEL, LoggerService, MyCoreModule } from 'src/lib/my-core';
 import { MainModule } from './main';
 import { CommonModule } from '@angular/common';
 import { CommonServicesModule } from './common-services';
 import { SecurityModule } from './security';
+import { environment } from 'src/environments/environment';
+import { FormularioComponent } from './formulario/formulario.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,16 @@ import { SecurityModule } from './security';
     DemosComponent,
     DinamicoComponent,
     CalculadoraComponent,
+    FormularioComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
     AppRoutingModule, MyCoreModule, MainModule,CommonServicesModule, SecurityModule,
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'es-ES'}
+    LoggerService,
+    {provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL},
+    // {provide: LOCALE_ID, useValue: 'es-ES'}
   ],
   bootstrap: [AppComponent]
 })
