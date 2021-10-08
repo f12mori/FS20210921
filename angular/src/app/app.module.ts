@@ -14,6 +14,9 @@ import { CommonServicesModule } from './common-services';
 import { SecurityModule } from './security';
 import { environment } from 'src/environments/environment';
 import { FormularioComponent } from './formulario/formulario.component';
+import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
+import { FormButtomComponent } from './CommonComponent/form-buttom/form-buttom.component';
+import { ShowErrorsMessagesComponent } from './CommonComponent/show-errors-messages/show-errors-messages.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { FormularioComponent } from './formulario/formulario.component';
     DinamicoComponent,
     CalculadoraComponent,
     FormularioComponent,
+    ClienteFormularioComponent,
+    ShowErrorsMessagesComponent,
+    FormButtomComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
