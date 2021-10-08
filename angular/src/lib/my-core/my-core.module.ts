@@ -2,10 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SizerComponent } from './components/sizer.component';
 import { PIPES_CADENAS } from './pipes/cadenas.pipe';
+import { DIRECTIVAS_ATRIBUTO } from './directives/atributos.directive';
+import { MIS_VALIDADORES } from './directives/validadores.directive';
+import { UnlessDirective } from './directives/estructurales.directive';
+
+
 
 @NgModule({
-  declarations: [SizerComponent, PIPES_CADENAS],
-  exports: [SizerComponent, PIPES_CADENAS],
-  imports: [CommonModule],
+  declarations: [
+    SizerComponent, PIPES_CADENAS, DIRECTIVAS_ATRIBUTO, MIS_VALIDADORES, UnlessDirective,
+  ],
+  exports: [
+    SizerComponent, PIPES_CADENAS, DIRECTIVAS_ATRIBUTO, MIS_VALIDADORES, UnlessDirective,
+  ],
+  imports: [
+    CommonModule
+  ]
 })
-export class MyCoreModule {}
+export class MyCoreModule { }

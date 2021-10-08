@@ -9,14 +9,13 @@ import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ERROR_LEVEL, LoggerService, MyCoreModule } from 'src/lib/my-core';
 import { MainModule } from './main';
-import { CommonModule } from '@angular/common';
 import { CommonServicesModule } from './common-services';
 import { SecurityModule } from './security';
 import { environment } from 'src/environments/environment';
 import { FormularioComponent } from './formulario/formulario.component';
 import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
-import { FormButtomComponent } from './CommonComponent/form-buttom/form-buttom.component';
-import { ShowErrorsMessagesComponent } from './CommonComponent/show-errors-messages/show-errors-messages.component';
+import { CommonComponentModule } from './common-component';
+
 
 @NgModule({
   declarations: [
@@ -26,12 +25,11 @@ import { ShowErrorsMessagesComponent } from './CommonComponent/show-errors-messa
     CalculadoraComponent,
     FormularioComponent,
     ClienteFormularioComponent,
-    ShowErrorsMessagesComponent,
-    FormButtomComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
-    AppRoutingModule, MyCoreModule, MainModule,CommonServicesModule, SecurityModule,
+    AppRoutingModule, MyCoreModule, MainModule,CommonServicesModule, SecurityModule,CommonComponentModule,
+
   ],
   providers: [
     LoggerService,

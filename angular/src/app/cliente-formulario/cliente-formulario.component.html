@@ -1,71 +1,133 @@
 <div>
-  <input type="button" value="add" (click)="vm.add()" >|
-  <input type="button" value="edit" (click)="vm.edit()" >
+  <input type="button" value="add" (click)="vm.add()" />|
+  <input type="button" value="edit" (click)="vm.edit()" />
 </div>
 <form #miForm="ngForm">
   <div>
-  <label for="id">Código</label>
-   <input type="number" id="id" name="id" [(ngModel)]="vm.Elemento.id" #id="ngModel" required min="0" >
-   <!-- <output class="error" [hidden]="!id.errors?.required">Es obligatorio. </output> -->
-   <app-show-errors-messages ></app-show-errors-messages>
-</div>
- <div class="field">
-  <label for="id">Tienda</label>
-  <select id="store_id" name="store_id">
+    <label for="id">Código</label>
+    <input
+      type="number"
+      id="id"
+      name="id"
+      [(ngModel)]="vm.Elemento.id"
+      #id="ngModel"
+      required
+      min="0"
+    />
+
+    <app-show-errors-messages [errors]="id.errors"></app-show-errors-messages>
+  </div>
+  <div class="field">
+    <label for="id">Tienda</label>
+    <select id="store_id" name="store_id">
       <option value="1">Tienda 1</option>
       <option value="2">Tienda 2</option>
-  </select>
-</div>
-<div>
-  <label for="nombre">Nombre</label>
-  <input type="text" id="nombre" name="nombre" [(ngModel)]="vm.Elemento.nombre" #nombre="ngModel" required minlength="2" maxlength="10" >
-   <output class="error" [hidden]="!nombre.errors?.required">Es obligatorio. </output>
-  <!-- <output class="error" [hidden]="!nombre.errors?.minlength && !nombre.errors?.maxlength">Debe tener entre 2 y 10 letras. </output>
-  {{ nombre.errors | json }} -->
-</div>
-<div>
-  <label for="apellidos">Apellidos</label>
-  <input type="text" id="apellidos" name="apellidos" [(ngModel)]="vm.Elemento.apellidos" #apellidos="ngModel" minlength="2" maxlength="10" >
-  <!-- <output class="error" [hidden]="!apellidos.errors?.minlength && !apellidos.errors?.maxlength">Debe tener entre 2 y 10 letras. </output> -->
-</div>
-
-
-<label for="correo">Correo</label>
-<input type="email" id="correo" [(ngModel)]="vm.Elemento.correo" #correo="ngModel" name="correo" maxlength="100" email >
-<!-- <output class="error" [hidden]="!correo.errors?.email">No es un correo electrónico valido. </output> -->
-<div>
-  <label for="ubicacion">Ubicacion</label>
-  <div class="field__radio" id="ubicacion" [(ngModel)]="vm.Elemento.ubicacion" #ubicacion="ngModel">
-      <span>
-          <input type="radio" id="ubicacion" name="ubicacion" checked value="1">
-          Casa
-      </span>
-      <span>
-          <input type="radio" name="ubicacion" value="2">
-          Trabajo
-      </span>
+    </select>
   </div>
-</div>
+  <div>
+    <label for="nombre">Nombre</label>
+    <input
+      type="text"
+      id="nombre"
+      name="nombre"
+      [(ngModel)]="vm.Elemento.nombre"
+      #nombre="ngModel"
+      required
+      minlength="2"
+      maxlength="10"
+    />
+    <output class="error" [hidden]="!nombre.errors?.required"
+      >Es obligatorio.
+    </output>
+  </div>
+  <div>
+    <label for="apellidos">Apellidos</label>
+    <input
+      type="text"
+      id="apellidos"
+      name="apellidos"
+      [(ngModel)]="vm.Elemento.apellidos"
+      #apellidos="ngModel"
+      minlength="2"
+      maxlength="10"
+    />
+  </div>
 
-<div>
-  <label for="Activo" [(ngModel)]="vm.Elemento.activo" #active="ngModel" >Activo</label>
-  <input type="checkbox" id="active" name="active" value="true" checked>
-</div>
-<div class="field">
-  <label for="create_date">Fecha</label>
-  <input type="date" id="create_date" name="create_date">
-</div>
+  <label for="correo">Correo</label>
+  <input
+    type="email"
+    id="correo"
+    [(ngModel)]="vm.Elemento.correo"
+    #correo="ngModel"
+    name="correo"
+    maxlength="100"
+    email
+  />
+  <div>
+    <label for="ubicacion">Ubicacion</label>
+    <div
+      class="field__radio"
+      id="ubicacion"
+    >
+      <span>
+        <input type="radio" id="ubicacion" name="ubicacion" checked value="1" />
+        Casa
+      </span>
+      <span>
+        <input type="radio" name="ubicacion" value="2" />
+        Trabajo
+      </span>
+    </div>
+  </div>
 
-<div>
-  <label for="edad">Edad</label>
-  <input type="number" id="edad" name="edad" [(ngModel)]="vm.Elemento.edad" #edad="ngModel" min="16" max="67">
-  <!-- <output class="error" [hidden]="!edad.errors?.min">Debe tener al menos {{edad.errors?.min?.min}} años. </output>
-  <output class="error" [hidden]="!edad.errors?.max">Debe tener {{edad.errors?.max?.max}} años como máximo. </output> -->
-</div>
-<div>
-  <label for="dni"  [(ngModel)]="vm.Elemento.dni" #dni="ngModel">DNI</label>
-  <input type="text" id="dni" name="dni">
-</div>
+  <div>
+    <label for="Activo">Activo</label>
+    <input
+      type="checkbox"
+      id="active"
+      name="active"
+      value="true"
+      checked
+      [(ngModel)]="vm.Elemento.activo"
+      #active="ngModel"
+    />
+  </div>
+  <div class="field">
+    <label for="create_date">Fecha</label>
+    <input
+      type="date"
+      id="create_date"
+      name="create_date"
+      [(ngModel)]="vm.Elemento.fecha"
+      #fecha="ngModel"
+    />
+  </div>
 
-<app-form-buttom (send)="vm.send()" (cancel)="vm.cancel()"></app-form-buttom>
+  <div>
+    <label for="edad">Edad</label>
+    <input
+      type="number"
+      id="edad"
+      name="edad"
+      [(ngModel)]="vm.Elemento.edad"
+      #edad="ngModel"
+      min="16"
+      max="67"
+    />
+  </div>
+  <div>
+    <label for="dni">DNI</label>
+    <input
+      type="text"
+      id="dni"
+      name="dni"
+      [(ngModel)]="vm.Elemento.dni"
+      #dni="ngModel"
+    />
+  </div>
+
+  <app-form-buttons
+    (send)="vm.send()"
+    (cancel)="vm.cancel()"
+  ></app-form-buttons>
 </form>

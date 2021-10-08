@@ -77,7 +77,13 @@ export class ClientesViewModel {
     this.IsAdd = false;
   }
 
-  public delete() {}
+  public delete() {
+    // if(!window.confirm('¿Seguro?'))
+    //  return;
+    // this.notify.add('Borrado');
+  }
+
+
   public send() {
     this.notify.add(
       (this.IsAdd ? 'Nuevos: ' : 'Modificados: ') +
