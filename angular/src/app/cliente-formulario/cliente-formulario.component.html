@@ -5,17 +5,11 @@
 <form #miForm="ngForm">
   <div>
     <label for="id">Código</label>
-    <input
-      type="number"
-      id="id"
-      name="id"
-      [(ngModel)]="vm.Elemento.id"
-      #id="ngModel"
-      required
-      min="0"
-    />
+    <input type="number" id="id" name="id" [(ngModel)]="vm.Elemento.id" min="0"
+      #id="ngModel" required/>
 
-    <app-show-errors-messages [errors]="id.errors"></app-show-errors-messages>
+    <output class="invalid-feedback" [myShowErrors]="id.errors"></output>
+    <!-- <app-show-errors-messages [errors]="id.errors"></app-show-errors-messages> -->
   </div>
   <div class="field">
     <label for="id">Tienda</label>
@@ -36,9 +30,8 @@
       minlength="2"
       maxlength="10"
     />
-    <output class="error" [hidden]="!nombre.errors?.required"
-      >Es obligatorio.
-    </output>
+    <output class="invalid-feedback" [myShowErrors]="nombre.errors"></output>
+    <!-- <output class="error" [hidden]="!nombre.errors?.required">Es obligatorio.</output> -->
   </div>
   <div>
     <label for="apellidos">Apellidos</label>
@@ -63,6 +56,7 @@
     maxlength="100"
     email
   />
+
   <div>
     <label for="ubicacion">Ubicacion</label>
     <div
@@ -115,6 +109,7 @@
       max="67"
     />
   </div>
+  <output class="invalid-feedback" [myShowErrors]="edad.errors"></output>
   <div>
     <label for="dni">DNI</label>
     <input
@@ -125,6 +120,7 @@
       #dni="ngModel"
     />
   </div>
+  <output class="invalid-feedback" [myShowErrors]="dni.errors"></output>
 
   <app-form-buttons
     (send)="vm.send()"
