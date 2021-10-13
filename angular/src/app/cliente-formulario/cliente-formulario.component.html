@@ -29,6 +29,7 @@
       required
       minlength="2"
       maxlength="10"
+      lowercase
     />
     <output class="invalid-feedback" [myShowErrors]="nombre.errors"></output>
     <!-- <output class="error" [hidden]="!nombre.errors?.required">Es obligatorio.</output> -->
@@ -96,7 +97,7 @@
       #fecha="ngModel"
     />
   </div>
-
+  <output class="invalid-feedback" [myShowErrors]="fecha.errors"></output>
   <div>
     <label for="edad">Edad</label>
     <input
@@ -107,6 +108,7 @@
       #edad="ngModel"
       min="16"
       max="67"
+
     />
   </div>
   <output class="invalid-feedback" [myShowErrors]="edad.errors"></output>

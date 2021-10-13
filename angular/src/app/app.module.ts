@@ -16,9 +16,8 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
 import { CommonComponentModule } from './common-component';
 import {HttpClientModule} from '@angular/common/http'
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { ContactosModule } from './contactos/modulo.module';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,7 @@ import { ContactosModule } from './contactos/modulo.module';
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, MyCoreModule,
-    MainModule,CommonServicesModule, SecurityModule,CommonComponentModule, ContactosModule,
+    MainModule,CommonServicesModule, SecurityModule,CommonComponentModule, ContactosModule,NgxPaginationModule
 
   ],
   providers: [

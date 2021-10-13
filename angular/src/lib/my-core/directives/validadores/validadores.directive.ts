@@ -146,4 +146,22 @@ export class NotBlankValidator implements Validator {
 }
 
 
-export const MIS_VALIDADORES = [UppercaseValidator, NIFValidator, TypeValidator, ExcludeValidator, NotBlankValidator ]
+export function LowercaseValidation(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    if (!control.value) { return null; }
+    return control.value === control.value.toLowerCase() ? null : { lowercase: 'Tiene que estar en minusculas' }
+  };
+}
+
+@Directive({
+  selector: '[lowercase]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: LowercaseValidator, multi: true }]
+})
+export class LowercaseValidator implements Validator {
+  validate(control: AbstractControl): ValidationErrors | null {
+    return LowercaseValidation()(control);
+  }
+}
+
+
+export const MIS_VALIDADORES = [UppercaseValidator, NIFValidator, TypeValidator, ExcludeValidator, NotBlankValidator,LowercaseValidator, ]
