@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Unsubscribable } from 'rxjs';
 import { ERROR_LEVEL, LoggerService } from 'src/lib/my-core';
 import { NotificationService } from '../common-services/notification.service';
 
@@ -22,6 +23,7 @@ export class DemosComponent implements OnInit {
   visible = true;
   estetica = { importante: true, error: false, urgente: true };
   fontSize = 18;
+  private suscriptor: Unsubscribable | undefined;
 
 
   constructor( private log: LoggerService, public vm: NotificationService) {
@@ -64,6 +66,8 @@ export class DemosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
   }
 
 }

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { NotificationService, NotificationType } from '../common-services';
@@ -32,7 +33,7 @@ export class PersonasViewModel {
   }
   IsAdd = true;
 
-  constructor(private notify: NotificationService) {
+  constructor(private notify: NotificationService, private http: HttpClient) {
     this.add();
   }
   public list() {}
@@ -49,6 +50,7 @@ export class PersonasViewModel {
   }
 
   public edit() {
+    this.http.get('http://localhost:4321/api/personas/${this.Elemento.id}')
     this.Elemento = this.Listado[0];
     this.IsAdd = true;
   }

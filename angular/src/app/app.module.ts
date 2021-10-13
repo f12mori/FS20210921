@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 import { FormularioComponent } from './formulario/formulario.component';
 import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
 import { CommonComponentModule } from './common-component';
-
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -27,14 +27,14 @@ import { CommonComponentModule } from './common-component';
     ClienteFormularioComponent,
   ],
   imports: [
-    BrowserModule, FormsModule,
+    BrowserModule, FormsModule, HttpClientModule,
     AppRoutingModule, MyCoreModule, MainModule,CommonServicesModule, SecurityModule,CommonComponentModule,
 
   ],
   providers: [
     LoggerService,
     {provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL},
-    // {provide: LOCALE_ID, useValue: 'es-ES'}
+    {provide: LOCALE_ID, useValue: 'es-ES'}
   ],
   bootstrap: [AppComponent]
 })
