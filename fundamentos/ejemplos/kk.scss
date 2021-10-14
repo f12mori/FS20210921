@@ -1,79 +1,100 @@
-@import url('variables.css');
+@use 'principales' as *;
 
-.error-msg {
-  color: var(--error-color, red);
+$color: red;
+$propiedad: color;
+$ancho: min-width;
+$ancho-definido: 100px;
+$modulo: articulo;
+%comun {
+    display: flex;
+    flex-flow: row wrap;
 }
+:root {
+    --error-color: rgb(163, 0, 0);
+    --principal-background-color: white;
+    --principal-text-color: rgb(39, 39, 163);
+    --principal-caption-color: rgb(0, 0, 116);
+    --secundario-background-color: black;
+    --secundario-text-color: white;
+    --secundario-caption-color: white;
+}
+.my-#{$propiedad} {
+    #{$ancho}: $ancho-definido;
+    background-color: aqua;
+}
+.#{$modulo}__menu {
+    background-color: aqua;
 
+}
+.#{$modulo}__logo {
+    background-color: aqua;
+   
+}
+.#{$modulo}__login {
+    background-color: aqua;
+  
+}
 body {
-  color: var(--cuerpo-color);
-  background-color: var(--fondo-cuerpo);
-}
-
-.flex-container {
-  display: flex;
-  background-color: var(--fondo-cabeza-body);
-
-  > div {
-    width: 300px;
-    margin: 5px;
-    text-align: center;
-    line-height: 70px;
-    font-size: 2.5em;
-  }
-}
-
-@media (max-width: 600px) {
-  .flex-container {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 800px) {
-  .flex-container {
-    flex-direction: row;
-  }
-}
-
-input[type=text] {
-  width: 130px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  font-size: 20px;
-  background-color: white;
-  background-image: url('../imagenes/lupa.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  padding: 12px 20px 12px 40px;
-  transition: width 0.4s ease-in-out;
-
-  &:focus {
-    width: 70%;
-    font-size: 30px;
-  }
-}
-
-header {
-  color: green;
-  background-color: rgb(117, 212, 192);
-}
-
-@media print {
-  input {
-    &[type=submit], &[type=button] {
-      display: none;
+    #{$propiedad}: $color;
+    div {
+        background-color: aqua;
     }
-  }
-
-  body {
-    > header {
-      display: none;
+    background-color: var(--principal-background-color, white);
+//    color: var(--principal-text-color, black);
+    margin: 0;
+    > header,  > footer  {
+        @extend %comun;
+        background-color: var(--secundario-background-color, black);;
+        color: var(--secundario-text-color, black);
+        padding: 10px;
+        align-items: stretch;
     }
-
-    font-size: 20pt;
-  }
-
-  img {
-    max-width: 200px;
-  }
 }
+
+
+.cabecera-principal {
+    @include elementosPrincipales();
+    &__menu {
+        flex-grow: 1;
+        margin-left: 5px;
+        margin-right: 5px;
+    }   
+}
+.pie-principal {
+    @include elementosPrincipales(12px) ;  
+}
+.cabecera-principal, .pie-principal, body > header a, body > footer a {
+    color: var(--secundario-text-color, black);
+}
+.cabecera-principal, body > header {
+    position: sticky;
+    top: 0;
+}
+
+.cabecera-principal__logo, #logo {
+    max-width: 120px;
+}
+
+.cabecera-principal__menu {
+    align-self: stretch;
+}
+
+.otra {
+    @extend %comun;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+$sizes: 40px, 50px, 80px;
+@each $size in $sizes {
+  .icon-#{$size} { font-size: $size; height: $size; width: $size; }
+}
+
+/* indicadore de columnas grid */
+// este no se ve
+@for $i from 1 through 12 {
+    @debug 'genero ' + $i;
+    .col-#{$i} { grid-column: $i; }
+  }
+  

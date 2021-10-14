@@ -1,96 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora</title>
-  </head>
-  <body>
-    <div class="calculadora">
-      <h1>Calculadora</h1>
 
-      <table>
-        <tr>
-          <td>
-            <input
-              type="textfield"
-              class="cuerpo__screen"
-              id="resultado"
-              value="0"
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="button" value="C" class="borrar" id="borrar" />
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="theme/style.css">
+	<title>Ejercicio de Calculadora</title>
+</head>
 
-            <input type="button" value="%" class="operador" id="porcentaje" />
-            <input type="button" value="R" class="borrar" id="retroceso" />
-            <input type="button" value="/" class="operador" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="button" value="7" class="num" id="n7" />
-            <input type="button" value="8" class="num" id="n8" />
-            <input type="button" value="9" class="num" id="n9" />
-            <input type="button" value="*" class="operador" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="button" value="4" class="num" id="n4" />
-            <input type="button" value="5" class="num" id="n5" />
-            <input type="button" value="6" class="num" id="n6" />
-            <input type="button" value="-" class="operador" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="button" value="1" class="num" id="n1" />
-            <input type="button" value="2" class="num" id="n2" />
-            <input type="button" value="3" class="num" id="n3" />
-            <input type="button" value="+" class="operador" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="button" value="0" class="num" id="n0" />
-            <input type="button" value="," class="num" id="coma" />
-            <input type="button" value="=" class="operador" id="=" />
-          </td>
-        </tr>
-      </table>
-    </div>
-    <script src="js/calculadora.js"></script>
-    <script>
-      (function () {
-        let calculadora = new Calculadora();
+<body>
+	<main>
+		<h1>Calculadora</h1>
+		<div class="Calculadora">
+			<output class="Resumen" id="txtResumen"></output>
+			<output class="Pantalla" id="txtPantalla"></output>
+			<input id="btnIniciar" class="btnOperar" type="button" value="C">
+			<input id="btnBorrar" class="btnOperar col-2x2" type="button" value="BORRAR">
+			<input class="btnOperar btnCalc" type="button" value="+">
+			<input class="btnDigito btnNum" type="button" value="7">
+			<input class="btnDigito btnNum" type="button" value="8">
+			<input class="btnDigito btnNum" type="button" value="9">
+			<input class="btnOperar btnCalc" type="button" value="-">
+			<input class="btnDigito btnNum" type="button" value="4">
+			<input class="btnDigito btnNum" type="button" value="5">
+			<input class="btnDigito btnNum" type="button" value="6">
+			<input class="btnOperar btnCalc" type="button" value="*">
+			<input class="btnDigito btnNum" type="button" value="1" data-valor="1">
+			<input class="btnDigito btnNum" type="button" value="2">
+			<input class="btnDigito btnNum" type="button" value="3">
+			<input class="btnOperar btnCalc" type="button" value="/">
+			<input class="btnDigito" type="button" value="±">
+			<input class="btnDigito btnNum" type="button" value="0" data-valor="0">
+			<input class="btnDigito" type="button" value=",">
+			<input class="btnOperar btnCalc" type="button" value="=">
+		</div>
+	</main>
 
-        document.querySelectorAll(".num").forEach((tag) => {
-          tag.addEventListener("click", (ev) => {
-            calculadora.ponerdigito(ev.target.value);
-            resultado.value = calculadora.pantalla;
-          });
-        });
 
-        document.querySelectorAll(".operador").forEach((tag) => {
-          tag.addEventListener("click", (ev) => {
-            calculadora.operador(ev.target.value);
-            resultado.value = calculadora.pantalla;
-          });
-        });
+	<script type="text/javascript" src="js/calculadora.js"></script>
+	<script type="text/javascript">
+		(function () {
+			let txtPantalla = document.querySelector('#txtPantalla');
+			let txtResumen = document.querySelector('#txtResumen');
+			let calc = new Calculadora(
+				value => txtPantalla.textContent = value.replace(/\./g, ','), 
+				value => txtResumen.textContent = value.replace(/\./g, ',').slice(-20)
+				);
+			calc.inicia();
+			document.querySelectorAll('.btnNum').forEach(tag => {
+				tag.addEventListener('click', ev => {
+					calc.ponDigito(ev.target.value);
+				})
+			})
+			document.querySelectorAll('.btnCalc').forEach(tag => {
+				tag.addEventListener('click', ev => {
+					calc.calcula(ev.target.value);
+				})
+			})
+			document.querySelector('[value=","]').addEventListener('click', calc.ponComa)
+			document.querySelector('[value="±"]').addEventListener('click', calc.cambiaSigno);
+			document.querySelector('#btnIniciar').addEventListener('click', calc.inicia);
+			document.querySelector('#btnBorrar').addEventListener('click', calc.borrar);
+		})();
+	</script>
+</body>
 
-        borrar.addEventListener("click", (ev) => {
-          calculadora.borrar(ev.target.value);
-          resultado.value = calculadora.pantalla;
-        });
-
-        retroceso.addEventListener("click", (ev) => {
-          calculadora.retroceso(ev.target.value);
-          resultado.value = calculadora.pantalla;
-        });
-      })();
-    </script>
-  </body>
 </html>

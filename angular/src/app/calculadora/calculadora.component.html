@@ -1,67 +1,41 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora JS</title>
-
-  </head>
-  <body>
-    <div class="calculadora">
-      <h3>Calculadora</h3>
-
-      <table>
-        <tr>
-          <td>
-            <input type="text" [(ngModel)]="pantalla"/>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="button" value="C" (click)="inicia()"/>
-            <input type="button" value="CE" id="ce" />
-            <input type="button" value="R" (click)="borrarNum()" />
-            <input type="button" value="/" (click)="Operaciones('/')"/>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="button" value="7" (click)="ponerDigito('7')" />
-            <input type="button" value="8" (click)="ponerDigito('8')"/>
-            <input type="button" value="9" (click)="ponerDigito('9')" />
-            <input type="button" value="*" (click)="Operaciones('*')" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="button" value="4" (click)="ponerDigito('4')" />
-            <input type="button" value="5" (click)="ponerDigito('5')"/>
-            <input type="button" value="6" (click)="ponerDigito('6')" />
-            <input type="button" value="-"  (click)="Operaciones('-')"/>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="button" value="1" (click)="ponerDigito('1')" />
-            <input type="button" value="2" (click)="ponerDigito('2')" />
-            <input type="button" value="3" (click)="ponerDigito('3')" />
-            <input type="button" value="+" (click)="Operaciones('+')" />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input
-              type="button" value="+/-" class="operaciones" (click)="cambiaSigno()" />
-            <input type="button" value="0" (click)="ponerDigito('0')" />
-            <input type="button" value="," (click)="ponerComa()" />
-            <input type="button" value="=" (click)="Operaciones('=')" />
-          </td>
-        </tr>
-      </table>
-
-
-    </div>
-
-  </body>
-</html>
+<div class="Calculadora">
+  <output class="Resumen">
+    <ng-container *ngIf="SeparadorDecimal === ','; then ResumenComa; else ResumenPunto;"></ng-container>
+  </output>
+  <output class="Pantalla">
+    <ng-container *ngIf="SeparadorDecimal === ','; then PantallaComa; else PantallaPunto;"></ng-container>
+  </output>
+  <input class="btnOperar" type="button" value="C" (click)="inicia()">
+  <input class="btnOperar col-2x2" type="button" value="BORRAR" (click)="borrar()">
+  <input class="btnOperar" type="button" value="+" (click)="calcula('+')">
+  <input class="btnDigito" type="button" value="7" (click)="ponDigito('7');">
+  <input class="btnDigito" type="button" value="8" (click)="ponDigito('8');">
+  <input class="btnDigito" type="button" value="9" (click)="ponDigito('9');">
+  <input class="btnOperar" type="button" value="-" (click)="calcula('-')">
+  <input class="btnDigito" type="button" value="4" (click)="ponDigito('4');">
+  <input class="btnDigito" type="button" value="5" (click)="ponDigito('5');">
+  <input class="btnDigito" type="button" value="6" (click)="ponDigito('6');">
+  <input class="btnOperar" type="button" value="*" (click)="calcula('*')">
+  <input class="btnDigito" type="button" value="1" (click)="ponDigito('1');">
+  <input class="btnDigito" type="button" value="2" (click)="ponDigito('2');">
+  <input class="btnDigito" type="button" value="3" (click)="ponDigito('3');">
+  <input class="btnOperar" type="button" value="/" (click)="calcula('/')">
+  <input class="btnDigito" type="button" value="±" (click)="cambiaSigno()">
+  <input class="btnDigito" type="button" value="0" (click)="ponDigito('0');">
+  <input class="btnDigito" type="button" value="{{SeparadorDecimal}}" (click)="ponComa()">
+  <input class="btnOperar" type="button" value="=" (click)="calcula('=');">
+  <input class="btnDigito" type="button" value="π" (click)="ponOperando(Math.PI);">
+  <input class="btnOperar" type="button" value="x" (click)="calcula('x');">
+</div>
+<ng-template #ResumenComa>
+  {{Resumen | slice:-30 | toComaDecimal}}
+</ng-template>
+<ng-template #ResumenPunto>
+  {{Resumen | slice:-30}}
+</ng-template>
+<ng-template #PantallaComa>
+  {{Pantalla | toComaDecimal}}
+</ng-template>
+<ng-template #PantallaPunto>
+  {{Pantalla}}
+</ng-template>

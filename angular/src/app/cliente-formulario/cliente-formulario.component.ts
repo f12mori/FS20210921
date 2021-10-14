@@ -1,69 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { Injectable } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { NotificationService, NotificationType } from '../common-services';
 
-export interface Cliente {
-  id: number | null;
-  tienda: number | null;
-  nombre: string | null;
-  apellidos: string;
-  correo: string | null;
-  ubicacion: number | null;
-  activo: boolean | null;
-  fecha: Date | null;
-  edad: number | null;
-  dni: string | null;
-}
-
-@Injectable({ providedIn: 'root' })
-export class ClientesViewModel {
-  Listado: Array<Cliente> = [
-    {
-      id: 1,
-      nombre: 'Pepito',
-      apellidos: 'Grillo',
-      tienda: 1,
-      ubicacion: 1,
-      activo: true,
-      fecha: null,
-      correo: 'pepito@grillo',
-      edad: 99,
-      dni: '12345678Z',
-    },
-  ];
-  Elemento: Cliente = {
-    id: null,
-    tienda: null,
-    nombre: '',
-    apellidos: '',
-    ubicacion: 1,
-    activo: true,
-    fecha: null,
-    correo: null,
-    edad: null,
-    dni: null,
-  };
+@Injectable({providedIn: 'root'})
+export class ClienteViewModel {
+  Listado: Array<any> = [
+    { customer_id: 1, first_name: 'Pepito', last_name: 'Grillo', email: 'pepito@grillo', create_date: '2021-10-22' , last_update: (new Date('2021-10-22')).toISOString() }
+  ]
+  Elemento: any = { };
   IsAdd = true;
 
   constructor(private notify: NotificationService) {
-    this.add();
+
   }
 
-  public list() {}
+  public list() {
+
+  }
 
   public add() {
-    this.Elemento = {
-      id: null,
-      tienda: null,
-      nombre: '',
-      apellidos: '',
-      ubicacion: 1,
-      activo: true,
-      fecha: null,
-      correo: null,
-      edad: null,
-      dni: null,
-    };
+    this.Elemento = { }
     this.IsAdd = true;
   }
 
@@ -78,43 +33,29 @@ export class ClientesViewModel {
   }
 
   public delete() {
-    // if(!window.confirm('¿Seguro?'))
-    //  return;
-    // this.notify.add('Borrado');
-  }
-
-
-  public send() {
-    this.notify.add(
-      (this.IsAdd ? 'Nuevos: ' : 'Modificados: ') +
-        JSON.stringify(this.Elemento),
-      NotificationType.info
-    );
+    if(!window.confirm('¿Seguro?')) return;
+    this.notify.add('Borrado');
   }
 
   public cancel() {
-    this.Elemento = {
-      id: null,
-      tienda: null,
-      nombre: '',
-      apellidos: '',
-      ubicacion: 1,
-      activo: true,
-      fecha: null,
-      correo: null,
-      edad: null,
-      dni: null,
-    };
+
+  }
+
+  public send() {
+    this.notify.add((this.IsAdd ? 'Nuevos: ' : 'Modificados: ') + JSON.stringify(this.Elemento), NotificationType.info);
   }
 }
 
 @Component({
   selector: 'app-cliente-formulario',
   templateUrl: './cliente-formulario.component.html',
-  styleUrls: ['./cliente-formulario.component.scss'],
+  styleUrls: ['./cliente-formulario.component.scss']
 })
 export class ClienteFormularioComponent implements OnInit {
-  constructor(public vm: ClientesViewModel) {}
 
-  ngOnInit(): void {}
+  constructor(public vm: ClienteViewModel) { }
+
+  ngOnInit(): void {
+  }
+
 }

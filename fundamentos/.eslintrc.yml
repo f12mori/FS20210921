@@ -5,11 +5,11 @@ env:
 plugins:
   - jasmine
 extends: 
-  - 'eslint:recommended'
   - 'plugin:jasmine/recommended'
+  - 'eslint:recommended'
 parserOptions:
   ecmaVersion: 12
   sourceType: module
-rules: 
+rules:
   no-unused-vars: warn
 
