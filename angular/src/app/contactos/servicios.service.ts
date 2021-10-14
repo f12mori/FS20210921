@@ -114,9 +114,9 @@ export class ContactosViewModelService {
     this.elemento = {};
     this.idOriginal = null;
     // this.list();
-    this.router.navigateByUrl(this.listURL);
+    //this.router.navigateByUrl(this.listURL);
     //this.load(this.page)
-    // this.navigation.back()
+     this.navigation.back()
   }
 
   public send(): void {

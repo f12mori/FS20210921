@@ -13,7 +13,7 @@ import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ERROR_LEVEL, LoggerHTTPService, LoggerService, MyCoreModule } from 'src/lib/my-core';
 import { AjaxWaitInterceptor, MainModule } from './main';
-import { CommonServicesModule } from './common-services';
+import { CommonServicesModule,  } from './common-services';
 import { AuthInterceptor, SecurityModule } from './security';
 import { environment } from 'src/environments/environment';
 import { FormularioComponent } from './formulario/formulario.component';
