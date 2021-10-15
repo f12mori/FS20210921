@@ -22,7 +22,7 @@ import { ClienteFormularioComponent } from './cliente-formulario/cliente-formula
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ContactosModule } from './contactos';
 import { LibrosModule } from './libros';
-import { BlogModule } from './blog/servicios.service';
+import { BlogModule } from './blog';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { BlogModule } from './blog/servicios.service';
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     AppRoutingModule, MyCoreModule, MainModule, CommonServicesModule, CommonComponentModule,
-    SecurityModule, ContactosModule, LibrosModule, BlogModule,
+    SecurityModule, ContactosModule, LibrosModule,  BlogModule,
   ],
   providers: [
     LoggerService,

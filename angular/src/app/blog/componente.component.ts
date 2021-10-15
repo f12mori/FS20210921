@@ -105,7 +105,7 @@ export class BlogViewComponent implements OnInit, OnDestroy {
   }
 }
 
-export const BLOG_COMPONENTES = [
+export const BlogComponentes = [
   BlogComponent,
   BlogListComponent,
   BlogAddComponent,

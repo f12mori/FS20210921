@@ -8,7 +8,6 @@ import { LibrosComponent } from './libros';
 import { HomeComponent, PageNotFoundComponent } from './main';
 import { AuthGuard, RegisterUserComponent } from './security';
 
-// http://localhost:4200/contactos/add
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
