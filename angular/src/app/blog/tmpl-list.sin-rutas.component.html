@@ -2,9 +2,8 @@
   <thead>
     <tr class="table-info">
       <th class="display-4">Lista de contactos</th>
-      <th class="text-end">
-        <button *ngIf="VM.auth.isAutenticated" class="btn btn-success" routerLink="add"><i class="fas fa-plus"></i> Añadir</button>
-      </th>
+      <th class="text-end"><button *ngIf="VM.auth.isAutenticated" class="btn btn-success" (click)="VM.add()"><i class="fas fa-plus"></i>
+          Añadir</button></th>
     </tr>
   </thead>
   <tbody>
@@ -17,8 +16,8 @@
                 alt="Foto de {{item.nombre}} {{item.apellidos}}" width="75" height="75">
             </div>
             <div class="col-md-10">
-              <a class="btn btn-link btn-lg px-0" routerLink="{{item.id}}/{{item.nombre}}-{{item.apellidos}}">
-                {{item.tratamiento}} {{item.nombre}} {{item.apellidos}}</a>
+              <button type="button" class="btn btn-link btn-lg px-0" (click)="VM.view(item.id)">
+                {{item.tratamiento}} {{item.nombre}} {{item.apellidos}}</button>
               <br>
               <b>Tlfn.:</b> {{item.telefono}} <b>Correo:</b> {{item.email}}
             </div>
@@ -26,12 +25,12 @@
         </div>
       </td>
       <td class="align-middle text-end">
-        <div class="btn-group" role="group">
-          <button class="btn btn-info" routerLink="{{item.id}}/{{item.nombre}}-{{item.apellidos}}">
-            <i class="fas fa-eye"></i></button>
-          <button class="btn btn-success" [routerLink]="[item.id, 'edit']"><i class="fas fa-pen"></i></button>
+        <app-botones (view)="VM.view(item.id)" (edit)="VM.edit(item.id)" (delete)="VM.delete(item.id)"></app-botones>
+        <!-- <div class="btn-group" role="group">
+          <button class="btn btn-info" (click)="VM.view(item.id)"><i class="fas fa-eye"></i></button>
+          <button class="btn btn-success" (click)="VM.edit(item.id)"><i class="fas fa-pen"></i></button>
           <button class="btn btn-danger" (click)="VM.delete(item.id)"><i class="far fa-trash-alt"></i></button>
-        </div>
+        </div> -->
       </td>
     </tr>
   </tbody>

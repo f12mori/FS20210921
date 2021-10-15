@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BlogComponent } from './blog';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ContactosAddComponent, ContactosEditComponent, ContactosListComponent, ContactosViewComponent } from './contactos';
 import { DemosComponent } from './demos/demos.component';
 import { LibrosComponent } from './libros';
 import { HomeComponent, PageNotFoundComponent } from './main';
+import { AuthGuard, RegisterUserComponent } from './security';
 
 // http://localhost:4200/contactos/add
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'inicio', component: HomeComponent },
-  { path: 'demos', component: DemosComponent },
-  { path: 'chisme/de/hacer/numeros', component: CalculadoraComponent },
-  { path: 'contactos', children: [
-    { path: '', component: ContactosListComponent},
-    { path: 'add', component: ContactosAddComponent},
-    { path: ':id/edit', component: ContactosEditComponent},
-    { path: ':id', component: ContactosViewComponent},
-    { path: ':id/:kk', component: ContactosViewComponent},
-    ]},
+  { path: 'demos', component: DemosComponent, data: { pageTitle: 'Demos' }  },
+  { path: 'chisme/de/hacer/numeros', component: CalculadoraComponent, data: { pageTitle: 'Calculadora' } },
+  { path: 'contactos', component: ContactosListComponent },
+  { path: 'contactos/add', component: ContactosAddComponent, canActivate: [ AuthGuard ] },
+  { path: 'contactos/:id/edit', component: ContactosEditComponent, canActivate: [ AuthGuard ] },
+  { path: 'contactos/:id', component: ContactosViewComponent },
+  { path: 'contactos/:id/:kk', component: ContactosViewComponent },
   { path: 'libros', children: [
     { path: '', component: LibrosComponent },
     { path: 'add', component: LibrosComponent },
@@ -27,10 +27,18 @@ const routes: Routes = [
     { path: ':id', component: LibrosComponent },
     { path: ':id/:kk', component: LibrosComponent },
   ]},
-  { path: 'antonie/hasted', redirectTo: '/contactos/27'},
+  { path: 'blog', children: [
+     { path: '', component: BlogComponent },
+    { path: 'add', component: BlogComponent },
+    { path: ':id/edit', component: BlogComponent },
+    { path: ':id', component: BlogComponent },
+    { path: ':id/:kk', component: BlogComponent },
+  ]},
+  // { path: 'antonie/hasted', redirectTo: '/contactos/27'},
   { path: 'config', loadChildren: () => import('./config/config.module').then(mod => mod.ConfigModule)},
-  { path: '404.html', component: PageNotFoundComponent },
-  { path: '**', component: PageNotFoundComponent },
+  // { path: 'registro', component: RegisterUserComponent },
+  // { path: '404.html', component: PageNotFoundComponent },
+  // { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

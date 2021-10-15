@@ -13,7 +13,7 @@ import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ERROR_LEVEL, LoggerHTTPService, LoggerService, MyCoreModule } from 'src/lib/my-core';
 import { AjaxWaitInterceptor, MainModule } from './main';
-import { CommonServicesModule,  } from './common-services';
+import { CommonServicesModule } from './common-services';
 import { AuthInterceptor, SecurityModule } from './security';
 import { environment } from 'src/environments/environment';
 import { FormularioComponent } from './formulario/formulario.component';
@@ -22,6 +22,7 @@ import { ClienteFormularioComponent } from './cliente-formulario/cliente-formula
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ContactosModule } from './contactos';
 import { LibrosModule } from './libros';
+import { Blog } from './blog/servicios.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { LibrosModule } from './libros';
   imports: [
     BrowserModule, FormsModule, HttpClientModule,
     AppRoutingModule, MyCoreModule, MainModule, CommonServicesModule, CommonComponentModule,
-    SecurityModule, ContactosModule, LibrosModule,
+    SecurityModule, ContactosModule, LibrosModule, Blog,
   ],
   providers: [
     LoggerService,
