@@ -141,6 +141,7 @@ export class ContactosViewModelService {
     this.listado = [];
   }
 
+
   page = 0;
   totalPages = 0;
   totalRows = 0;
