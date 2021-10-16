@@ -27,6 +27,7 @@ export class BlogDAOService extends RESTDAOService<any, any> {
       context: new HttpContext().set(AUTH_REQUIRED, true),
     });
   }
+
   page(page: number, rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
     return new Observable(subscriber => {
       this.http.get<{ pages: number, rows: number }>(`${this.baseUrl}?_page=count&_rows=${rows}`, this.option)
@@ -59,7 +60,8 @@ export class BlogViewModelService {
     protected out: LoggerService,
     private navigation: NavigationService,
     protected dao: BlogDAOService,
-    protected router: Router
+    protected router: Router,
+    public auth: AuthService,
   ) {}
 
   public get Modo(): ModoCRUD {

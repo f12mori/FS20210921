@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BlogComponent } from './blog';
+import { BlogAddComponent, BlogComponent } from './blog';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ContactosAddComponent, ContactosEditComponent, ContactosListComponent, ContactosViewComponent } from './contactos';
 import { DemosComponent } from './demos/demos.component';
@@ -28,7 +28,7 @@ const routes: Routes = [
   ]},
   { path: 'blog', children: [
      { path: '', component: BlogComponent },
-    { path: 'add', component: BlogComponent },
+    { path: 'add', component: BlogAddComponent },
     { path: ':id/edit', component: BlogComponent },
     { path: ':id', component: BlogComponent },
     { path: ':id/:kk', component: BlogComponent },
