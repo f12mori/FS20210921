@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BlogAddComponent, BlogComponent } from './blog';
+import { BlogAddComponent, BlogComponent, BlogEditComponent, BlogViewComponent } from './blog';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ContactosAddComponent, ContactosEditComponent, ContactosListComponent, ContactosViewComponent } from './contactos';
 import { DemosComponent } from './demos/demos.component';
@@ -26,18 +26,18 @@ const routes: Routes = [
     { path: ':id', component: LibrosComponent },
     { path: ':id/:kk', component: LibrosComponent },
   ]},
+  { path: 'blog/edit', component: BlogEditComponent },
   { path: 'blog', children: [
+    { path: 'edit', component: BlogEditComponent },
      { path: '', component: BlogComponent },
     { path: 'add', component: BlogAddComponent },
-    { path: ':id/edit', component: BlogComponent },
-    { path: ':id', component: BlogComponent },
-    { path: ':id/:kk', component: BlogComponent },
+    { path: ':id', component: BlogViewComponent },
+    { path: ':id/edit', component: BlogEditComponent },
   ]},
-  // { path: 'antonie/hasted', redirectTo: '/contactos/27'},
+
   { path: 'config', loadChildren: () => import('./config/config.module').then(mod => mod.ConfigModule)},
   // { path: 'registro', component: RegisterUserComponent },
-  // { path: '404.html', component: PageNotFoundComponent },
-  // { path: '**', component: PageNotFoundComponent },
+
 ];
 
 @NgModule({

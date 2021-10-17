@@ -28,15 +28,15 @@ export class BlogDAOService extends RESTDAOService<any, any> {
     });
   }
 
-  page(page: number, rows: number = 20): Observable<{ page: number, pages: number, rows: number, list: Array<any> }> {
+  page(page: number, items: number = 5): Observable<{ page: number, pages: number, items: number, list: Array<any> }> {
     return new Observable(subscriber => {
-      this.http.get<{ pages: number, rows: number }>(`${this.baseUrl}?_page=count&_rows=${rows}`, this.option)
+      this.http.get<{ pages: number, items: number }>(`${this.baseUrl}?_page=count&items=${items}`, this.option)
         .subscribe(
           data => {
             if (page >= data.pages) page = data.pages > 0 ? data.pages - 1 : 0;
-            this.http.get<Array<any>>(`${this.baseUrl}?_page=${page}&_rows=${rows}&_sort=nombre`, this.option)
+            this.http.get<Array<any>>(`${this.baseUrl}?_page=${page}&items=${items}&_sort=nombre`, this.option)
               .subscribe(
-                lst => subscriber.next({ page, pages: data.pages, rows: data.rows, list: lst }),
+                lst => subscriber.next({ page, pages: data.pages, items: data.items, list: lst }),
                 err => subscriber.error(err)
               )
           },
@@ -149,15 +149,15 @@ export class BlogViewModelService {
   }
   page = 0;
   totalPages = 0;
-  totalRows = 0;
-  rowsPerPage = 8;
+  totalItems = 0;
+  itemsPerPage = 5;
   load(page: number = -1) {
     if(page < 0) page = this.page
-    this.dao.page(page, this.rowsPerPage).subscribe(
+    this.dao.page(page, this.itemsPerPage).subscribe(
       rslt => {
         this.page = rslt.page;
         this.totalPages = rslt.pages;
-        this.totalRows = rslt.rows;
+        this.totalItems = rslt.items;
         this.listado = rslt.list;
         this.modo = 'list';
       },

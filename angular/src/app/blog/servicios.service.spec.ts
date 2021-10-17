@@ -5,7 +5,6 @@ import { Observable, of } from 'rxjs';
 import { LoggerService } from 'src/lib/my-core';
 import { NotificationService } from '../common-services';
 
-import { Contactos, ContactosViewModelService } from './servicios.service';
 
 export class DAOServiceMock<T, K> {
   constructor(private listado: Array<T>) { }

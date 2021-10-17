@@ -1,13 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BlogViewModelService } from './servicios.service';
+import {EditorModule} from 'primeng/editor';
 
 @Component({
   selector: 'app-blog',
   templateUrl: './tmpl-anfitrion.component.html',
   styleUrls: ['./componente.component.scss'],
 })
+
 export class BlogComponent implements OnInit {
+
   constructor(protected vm: BlogViewModelService) {}
   public get VM(): BlogViewModelService {
     return this.vm;
@@ -104,7 +107,11 @@ export class BlogViewComponent implements OnInit, OnDestroy {
     this.obs$.unsubscribe();
   }
 }
+export class EditorDemo {
 
+  text: string | undefined;
+
+}
 export const BlogComponentes = [
   BlogComponent,
   BlogListComponent,

@@ -1,7 +1,7 @@
 <h1>Blog</h1>
 <form #miForm="ngForm">
-  <div class="form-row">
-    <div class="form-group col-md-2">
+  <div class="form">
+    <div class="form-group col-md-3">
       <label class="form-label" for="id">Código:</label>
       <input
         class="form-control"
@@ -20,9 +20,10 @@
       >
         Es obligatorio
       </div>
+
     </div>
 
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-3">
       <label class="form-label" for="autor">Nombre:</label>
       <input
         class="form-control"
@@ -43,11 +44,11 @@
         class="invalid-feedback"
         [hidden]="!autor?.errors?.minlength && !autor?.errors?.maxlength"
       >
-        Debe tener entre 3 y 30 letras
+        Debe tener entre 3 y 50 letras
       </div>
     </div>
-    <div class="form-group col-md-4">
-      <label class="form-label" for="texto">Publicacion:</label>
+    <div>
+      <label for="texto">Texto:</label>
       <input
         class="form-control"
         [class.is-invalid]="texto.invalid"
@@ -57,18 +58,10 @@
         [(ngModel)]="VM.Elemento.texto"
         #texto="ngModel"
         minlength="2"
+        maxlength="2000"
       />
-      <div
-        class="invalid-feedback"
-        [hidden]="!texto?.errors?.minlength && !texto?.errors?.maxlength"
-      >
-        Debe tener minimo 2 letras
-      </div>
     </div>
-  </div>
-  fotourl: string | null = null;
-  <div class="form-row">
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-3">
       <label class="form-label" for="Titulo">Titulo:</label>
       <input
         class="form-control"
@@ -78,15 +71,14 @@
         id="Titulo"
         [(ngModel)]="VM.Elemento.Titulo"
         #Titulo="ngModel"
-        maxlength="11"
+        maxlength="50"
       />
       <div class="invalid-feedback" [hidden]="!Titulo?.errors?.maxlength">
-        No debe tener mas de 9 dígitos
+        Debe tener entre maximo 50 caracteter
       </div>
     </div>
 
-
-    <div class="form-group col-md-2">
+    <div class="form-group col-md-3">
       <label class="form-label" for="fecha">Fecha:</label>
       <input
         class="form-control"
@@ -97,9 +89,7 @@
         #fecha="ngModel"
       />
     </div>
-      </div>
-  <div class="form-group row">
-    <div class="form-group col-md-12">
+    <div class="form-group col-md-3">
       <label class="form-label" for="avatar">Avatar:</label>
       <input
         class="form-control"
@@ -109,23 +99,24 @@
         id="avatar"
         [(ngModel)]="VM.Elemento.avatar"
         #avatar="ngModel"
-        maxlength="500"
+        maxlength="2000"
       />
+      <!-- <p-editor-container [(ngModel)]="VM.Elemento.texto"[style]="{'height':'320px'}">
+
+      </p-editor-container> -->
       <div class="invalid-feedback" [hidden]="!avatar?.errors?.maxlength">
-        Debe tener menos 500 caracteres.
+        Debe tener maximo 2000 caracteres.
       </div>
       <div class="invalid-feedback" [hidden]="!avatar?.errors?.type">
         {{ avatar?.errors?.type }}
       </div>
     </div>
+    <div>
+      <app-form-buttons
+        (send)="VM.send()"
+        [send-disabled]="miForm.invalid"
+        (cancel)="VM.cancel()"
+      ></app-form-buttons>
+    </div>
   </div>
-  <app-form-buttons
-    (send)="VM.send()"
-    [send-disabled]="miForm.invalid"
-    (cancel)="VM.cancel()"
-  ></app-form-buttons>
-  <!-- <div class="form-group">
-    <input type="button" class="btn btn-success" value="Enviar" (click)="VM.send()" [disabled]="miForm.invalid">
-    <input type="button" class="btn btn-info" value="Volver" (click)="VM.cancel()">
-  </div> -->
 </form>
