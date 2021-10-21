@@ -13,22 +13,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class DniTest {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-	}
-
 	@ParameterizedTest
 	@ValueSource(strings ={"45672645G","91255261R","15389397M",})
 	void testDniValido(String a) {
@@ -39,7 +23,7 @@ class DniTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings ={"45672641G","91285261R"," ",})
+	@ValueSource(strings ={"45672641G","91285261R","1234S",})
 	void testDniMalo(String a) {
 		Dni nif1= new Dni();
 		nif1.Dni(a);
