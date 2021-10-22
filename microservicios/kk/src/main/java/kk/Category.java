@@ -1,14 +1,7 @@
-package com.example.domains.entities;
+package kk;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.PastOrPresent;
-
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
-import org.hibernate.validator.constraints.Length;
-
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -20,7 +13,7 @@ import java.util.List;
 @Entity
 @Table(name="category")
 @NamedQuery(name="Category.findAll", query="SELECT c FROM Category c")
-public class Category implements Serializable {
+public class Category extends com.example.domains.core.EntityBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,8 +22,6 @@ public class Category implements Serializable {
 	private int categoryId;
 
 	@Column(name="last_update")
-	@Generated(value = GenerationTime.ALWAYS)
-	@PastOrPresent
 	private Timestamp lastUpdate;
 
 	private String name;

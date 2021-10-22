@@ -84,7 +84,7 @@ public class DemoApplication implements CommandLineRunner {
 			// .forEach(System.out::println);
 		// srv.modify(new Actor(333));
 //		srv.getAll().forEach(System.out::println);
-		Actor actor= new Actor(0, "", "  5 ");
+		Actor actor= new Actor(0, "ss", "12345678Z");
 //		if(actor.isInValid())
 //			actor.getError().forEach(item-> 
 //			System.out.println(item.getPropertyPath() + ": " + item.getMessage())
