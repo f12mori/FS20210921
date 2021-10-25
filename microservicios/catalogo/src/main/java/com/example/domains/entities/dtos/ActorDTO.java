@@ -1,6 +1,7 @@
 package com.example.domains.entities.dtos;
 
 import com.example.domains.entities.Actor;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
