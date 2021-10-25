@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import com.example.domains.contracts.services.ActorService;
 import com.example.domains.entities.Actor;
@@ -24,6 +27,31 @@ public class ActorServiceImpl implements ActorService {
 	}
 
 	@Override
+	public Iterable<Actor> getAll(Sort sort) {
+		return dao.findAll(sort);
+	}
+
+	@Override
+	public Page<Actor> getAll(Pageable pageable) {
+		return dao.findAll(pageable);
+	}
+
+	@Override
+	public <T> List<T> getByProjection(Class<T> type) {
+		return dao.findByActorIdIsNotNull(type);
+	}
+
+	@Override
+	public <T> Iterable<T> getByProjection(Sort sort, Class<T> type) {
+		return dao.findByActorIdIsNotNull(sort, type);
+	}
+
+	@Override
+	public <T> Page<T> getByProjection(Pageable pageable, Class<T> type) {
+		return dao.findByActorIdIsNotNull(pageable, type);
+	}
+
+	@Override
 	public Optional<Actor> getOne(Integer id) {
 		return dao.findById(id);
 	}
@@ -31,10 +59,9 @@ public class ActorServiceImpl implements ActorService {
 	@Override
 	public Actor add(Actor item) throws DuplicateKeyException, InvalidDataException {
 		if(item == null)
-			throw new InvalidDataException("Faltan los Datos");
-		if(item.isInValid())
-			throw new InvalidDataException("Errores de validacion: ");
-
+			throw new InvalidDataException("Faltan los datos");
+		if(item.isInvalid())
+			throw new InvalidDataException(item.getErrorsString());
 		if(getOne(item.getActorId()).isPresent())
 			throw new DuplicateKeyException();
 		return dao.save(item);
@@ -43,11 +70,9 @@ public class ActorServiceImpl implements ActorService {
 	@Override
 	public Actor modify(Actor item) throws NotFoundException, InvalidDataException {
 		if(item == null)
-			throw new InvalidDataException("Faltan los Datos");
-		if(item.isInValid())
-			throw new InvalidDataException("Errores de validacion: ");
-
-		if(getOne(item.getActorId()).isPresent())
+			throw new InvalidDataException("Faltan los datos");
+		if(item.isInvalid())
+			throw new InvalidDataException(item.getErrorsString());
 		if(getOne(item.getActorId()).isEmpty())
 			throw new NotFoundException();
 		return dao.save(item);
@@ -61,7 +86,7 @@ public class ActorServiceImpl implements ActorService {
 	@Override
 	public void delete(Actor item) throws InvalidDataException {
 		if(item == null)
-			throw new InvalidDataException("Faltan los Datos");
+			throw new InvalidDataException("Faltan los datos");
 		deleteById(item.getActorId());
 	}
 

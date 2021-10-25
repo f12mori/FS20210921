@@ -2,13 +2,6 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.PastOrPresent;
-
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
-import org.hibernate.validator.constraints.Length;
-
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -29,8 +22,6 @@ public class Category implements Serializable {
 	private int categoryId;
 
 	@Column(name="last_update")
-	@Generated(value = GenerationTime.ALWAYS)
-	@PastOrPresent
 	private Timestamp lastUpdate;
 
 	private String name;

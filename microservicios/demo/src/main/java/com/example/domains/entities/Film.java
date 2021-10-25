@@ -2,8 +2,6 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.Valid;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
@@ -51,7 +49,6 @@ public class Film implements Serializable {
 	//bi-directional many-to-one association to Language
 	@ManyToOne
 	@JoinColumn(name="language_id")
-	@Valid
 	private Language language;
 
 	//bi-directional many-to-one association to Language
