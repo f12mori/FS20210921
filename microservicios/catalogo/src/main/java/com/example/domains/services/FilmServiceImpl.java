@@ -11,7 +11,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import com.example.domains.contracts.services.FilmService;
+import com.example.domains.entities.Actor;
+import com.example.domains.entities.Category;
 import com.example.domains.entities.Film;
+import com.example.domains.entities.Language;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
@@ -89,6 +92,24 @@ public class FilmServiceImpl implements FilmService {
 		if(item == null)
 			throw new InvalidDataException("Faltan los datos");
 		deleteById(item.getFilmId());
+	}
+
+	@Override
+	public List<Actor> getFilmActores(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Language> getFilmLanguages(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Category> getFilmCategorias(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

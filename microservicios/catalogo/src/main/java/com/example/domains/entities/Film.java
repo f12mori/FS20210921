@@ -73,7 +73,7 @@ public class Film extends EntityBase<Film> implements Serializable {
 	}
 	
 
-	public Film(int filmId, String description, String title, Language language) {
+	public Film(int filmId, String description, String title) {
 		super();
 		this.filmId = filmId;
 		this.description = description;

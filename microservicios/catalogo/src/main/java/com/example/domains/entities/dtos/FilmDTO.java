@@ -21,17 +21,17 @@ public class FilmDTO {
 	
 	@JsonProperty("descripcion")
 	private String description;
-	
-	@JsonProperty("Lenguaje")
-	private String language;
+//	
+//	@JsonProperty("id_Lenguaje")
+//	private int filmId;
 	
 
 	public static Film from(FilmDTO source) {
-		return new Film(source.getFilmId(), source.getTitle(), source.getDescription(),source.getLanguage().name());
+		return new Film(source.getFilmId(), source.getTitle(), source.getDescription());
 	}
 
 	public static FilmDTO from(Film source) {
-		return new FilmDTO(source.getFilmId(), source.getTitle(), source.getDescription(),source.getLanguage().getName());
+		return new FilmDTO(source.getFilmId(), source.getTitle(), source.getDescription());
 	}
 	
 }

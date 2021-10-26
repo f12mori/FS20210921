@@ -57,6 +57,8 @@ public class CategoryResource {
 		
 		return srv.getOne(id);
 	}
+	
+	
 
 	@PostMapping
 	public ResponseEntity<Object> create(@Valid @RequestBody Category item)

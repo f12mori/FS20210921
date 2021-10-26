@@ -9,17 +9,16 @@ import lombok.NoArgsConstructor;
 @Data @AllArgsConstructor @NoArgsConstructor
 public class LanguageDTO {
 	@JsonProperty("id")
-	private int actorId;
+	private int languageId;
 	@JsonProperty("Idioma")
 	private String name;
 
-//	public static Language from(LanguageDTO source) {
-//		return new Actor(
-//				source.getActorId(),
-//				source.getFirstName(),
-//				source.getLastName()
-//				);
-//	}
+	public static Language from(LanguageDTO source) {
+		return new Language(
+				source.getLanguageId(),
+				source.getName()
+				);
+	}
 	public static LanguageDTO from(Language source) {
 		return new LanguageDTO(
 				source.getLanguageId(),
