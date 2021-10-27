@@ -1,17 +1,12 @@
 package com.example.application.resource;
 
 import java.net.URI;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
-import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
-import javax.validation.Validator;
-import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,9 +26,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import com.example.domains.contracts.services.CategoryService;
 import com.example.domains.entities.Category;
+import com.example.domains.entities.dtos.FilmShort;
 import com.example.exceptions.BadRequestException;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
@@ -58,7 +53,18 @@ public class CategoryResource {
 		return srv.getOne(id);
 	}
 	
-	
+	@GetMapping(path = "/{id}/peliculas")
+	@Transactional
+	public List<FilmShort> getPelis(@PathVariable int id) throws NotFoundException {
+		var Category = srv.getOne(id);
+		if(Category.isEmpty())
+			throw new NotFoundException();
+		else {
+			return (List<FilmShort>) Category.get().getFilmCategories().stream()
+					.map(item -> FilmShort.from(item.getFilm()))
+					.collect(Collectors.toList());
+		}
+	}
 
 	@PostMapping
 	public ResponseEntity<Object> create(@Valid @RequestBody Category item)

@@ -33,15 +33,19 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.example.domains.contracts.services.ActorService;
 import com.example.domains.entities.FilmActor;
 import com.example.domains.entities.dtos.ActorDTO;
+import com.example.domains.entities.dtos.FilmShort;
 import com.example.exceptions.BadRequestException;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
 
+import io.swagger.annotations.Api;
+
 import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping(path = "/actores")
+@Api(value = "Manteniento de actores", description = "Permite mantener la lista de actores utilizados en el reaparto de las peliculas")
 public class ActorResource {
 	@Autowired
 	ActorService srv;
@@ -66,6 +70,20 @@ public class ActorResource {
 			throw new NotFoundException();
 		else
 			return ActorDTO.from(actor.get());
+	}
+	
+
+	@GetMapping(path = "/{id}/peliculas")
+	@Transactional
+	public List<FilmShort> getPelis(@PathVariable int id) throws NotFoundException {
+		var actor = srv.getOne(id);
+		if(actor.isEmpty())
+			throw new NotFoundException();
+		else {
+			return (List<FilmShort>) actor.get().getFilmActors().stream()
+					.map(item -> FilmShort.from(item.getFilm()))
+					.collect(Collectors.toList());
+		}
 	}
 	
 	

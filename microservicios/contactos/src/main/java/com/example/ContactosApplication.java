@@ -1,6 +1,7 @@
 package com.example;
 
 import java.time.LocalDate;
+
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
@@ -15,6 +17,8 @@ import org.springframework.data.domain.Sort.Direction;
 import com.example.domains.entities.Contacto;
 import com.example.infraestructure.repositories.ContactoRepository;
 
+
+@EnableEurekaClient
 @SpringBootApplication
 public class ContactosApplication implements CommandLineRunner {
 

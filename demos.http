@@ -85,15 +85,41 @@ Content-Type: application/json
 }
 
 ###
+get  http://localhost:8001/auto/
+###
+get  http://localhost:8001/auto/counties
+###
+post http://localhost:8001/auto/countries
+Content-Type: application/json
 
-delete  http://localhost:8001/actores/206
+{"countrie": "Catalunia"}
 
 ###
 GET http://localhost:8010/categoria/
 
 ###
-GET http://localhost:8010/peliculas/1
+GET http://localhost/localhost:8010/peliculas/1
 
 
 ###
-GET http://localhost:8010/actores/1
+GET http://localhost:8010/actores
+
+
+###
+
+PUT http://localhost:8010/
+Content-Type: application/json
+
+###
+POST http://localhost:8010/actores
+Accept-Language: es-es
+Accept: text/plain, application/json
+Content-Type: application/json
+
+{
+  "id": 0,
+  "nombre": "Nuevo",
+  "apellidos": "Actooooooooooor"
+}
+###
+DELETE http://localhost:8010/actores/1
